@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.only(top: 40, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
