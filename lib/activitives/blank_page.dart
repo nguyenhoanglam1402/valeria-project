@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:valeria_app/activitives/services.dart';
 import 'package:valeria_app/widgets/schedule_picker.dart';
 
-class BlankPage extends StatelessWidget {
-  const BlankPage({Key key}) : super(key: key);
 
+class BlankPage extends StatelessWidget {
+  final Widget child;
+  const BlankPage({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class BlankPage extends StatelessWidget {
                           left: 20,
                           bottom: 5
                       ),
-                      child: SchedulePicker(),
+                      child: child,
                     ),
                   ],
                 )
@@ -45,10 +47,12 @@ class BlankPage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: TextButton(
+                onPressed: (){
+                  Navigator.pop(context, ServicesPage());
+                },
                 child: Icon(
                   FontAwesomeIcons.home,
                   color: Color(0xFF083654),
-
                 ),
               ),
             )

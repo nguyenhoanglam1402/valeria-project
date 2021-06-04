@@ -95,7 +95,7 @@ class _DiagnosePageState extends State<DiagnosePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'DIAGNOSE STATISTIC',
+                                  'DIAGNOSED STATISTIC',
                                   style: TextStyle(
                                       color: Color(0xffF2F2F2)
                                   ),
