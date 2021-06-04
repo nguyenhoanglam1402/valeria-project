@@ -1,48 +1,57 @@
+import 'dart:developer';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:valeria_app/activitives/services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
+
+  Route _customRoute(Widget nextPage){
+    return CupertinoPageRoute(
+      builder: (context) => nextPage,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffFFF8EA),
       body: SafeArea(
-        child: ListView(
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 40, right: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'lib/resource/logo.png',
-                    width: 140,
-                    height: 140,
-                  ),
-                ],
+            Positioned(
+              child: Image.asset(
+                'lib/resource/rounded_plus.png',
+                height: 140,
+                width: 140,
               ),
+              top:370,
+              right: 320,
             ),
-            Stack(
-              alignment: Alignment.center,
+            Positioned(
+              child: Image.asset(
+                'lib/resource/rounded_plus.png',
+                height: 140,
+                width: 140,
+              ),
+              top:200,
+              left: 300,
+            ),
+            ListView(
               children: [
-                Positioned(
-                  child: Image.asset(
-                    'lib/resource/rounded_plus.png',
-                    height: 140,
-                    width: 140,
+                Padding(
+                  padding: EdgeInsets.only(top: 40, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/resource/logo.png',
+                        width: 140,
+                        height: 140,
+                      ),
+                    ],
                   ),
-                  top:300,
-                  right: 320,
-                ),
-                Positioned(
-                  child: Image.asset(
-                    'lib/resource/rounded_plus.png',
-                    height: 140,
-                    width: 140,
-                  ),
-                  top:130,
-                  left: 300,
                 ),
                 Container(
                     padding: EdgeInsets.only(top: 20, bottom: 20),
@@ -52,7 +61,9 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context,_customRoute(ServicesPage()));
+                            },
                             child: Text(
                               'Services',
                               style: TextStyle(
@@ -133,9 +144,25 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     )
-                )
+                ),
               ],
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Developer: Nguyen Hoang Lam (Lam Emilie)\n'
+                      'Valeria Team Product 2021',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    height: 1.5,
+                    fontSize: 13,
+                    color: Color(0xFF5f6368),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
