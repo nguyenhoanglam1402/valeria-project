@@ -15,8 +15,7 @@ class ConnectionController{
   }
 
   static void setUserRoot(String rootName) {
-    _userRoot = FirebaseDatabase.instance.reference()
-        .child(rootName);
+    _userRoot = FirebaseDatabase.instance.reference().child(rootName);
     print(rootName);
   }
 

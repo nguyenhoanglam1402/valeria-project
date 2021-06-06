@@ -48,7 +48,7 @@ class BlankPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: TextButton(
                 onPressed: (){
-                  Navigator.pop(context, ServicesPage());
+                  Navigator.pop(context);
                 },
                 child: Icon(
                   FontAwesomeIcons.home,

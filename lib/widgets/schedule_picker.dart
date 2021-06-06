@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
+import 'package:valeria_app/activitives/blank_page.dart';
+import 'package:valeria_app/widgets/consultant_form.dart';
 
 class SchedulePicker extends StatefulWidget {
-  const SchedulePicker({Key key}) : super(key: key);
+  const SchedulePicker({Key key, int package}) : super(key: key);
+
+  final int package = 0;
 
   @override
   _SchedulePickerState createState() => _SchedulePickerState();
@@ -50,6 +54,11 @@ class _SchedulePickerState extends State<SchedulePicker> {
     });
   }
 
+  Route _customRoute(Widget nextPage){
+    return CupertinoPageRoute(
+      builder:(context) => nextPage,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -250,7 +259,24 @@ class _SchedulePickerState extends State<SchedulePicker> {
                               )
                           )
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        switch(widget.package){
+                          case 0:
+                            Navigator.push(context, _customRoute(
+                              BlankPage(
+                                child: ConsultantForm(),
+                              )
+                            ));
+                            break;
+                          case 1:
+                            Navigator.push(context, _customRoute(
+                                BlankPage(
+                                  child: ConsultantForm(),
+                                )
+                            ));
+                            break;
+                        }
+                      },
                       child: Text(
                         'Submit',
                         style: TextStyle(
