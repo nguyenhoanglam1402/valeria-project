@@ -595,7 +595,7 @@ class _DataCollectionState extends State<DataCollection> {
                             Map userRecordMap = new Map();
                             userRecordMap["kidney"] = kidneyGroup;
                             print(userRecordMap);
-                            ConnectionController.getUserRoot().set("Hello");
+                            ConnectionController.getUserRoot().push();
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xdce6e6e6),

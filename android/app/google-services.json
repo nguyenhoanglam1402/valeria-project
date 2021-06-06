@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "833723179982",
-    "project_id": "valeria-4ba57",
-    "storage_bucket": "valeria-4ba57.appspot.com"
+    "project_number": "766239619326",
+    "project_id": "valeria-project-3334b",
+    "storage_bucket": "valeria-project-3334b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833723179982:android:69078ffe17fe595c6c819f",
+        "mobilesdk_app_id": "1:766239619326:android:902654777e2176657c8daf",
         "android_client_info": {
           "package_name": "com.example.valeria_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "833723179982-52o8jlmo5vcb0p450uj9goenh2qshppq.apps.googleusercontent.com",
+          "client_id": "766239619326-q6opq3hduut9bq19dqs60kvrecp9koa2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB0YKSDDZJfjHiQckTju17mEorhr0r4mWU"
+          "current_key": "AIzaSyBeSEZLymwvSibSS46kpVXS1dtsXx0bey4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "833723179982-52o8jlmo5vcb0p450uj9goenh2qshppq.apps.googleusercontent.com",
+              "client_id": "766239619326-q6opq3hduut9bq19dqs60kvrecp9koa2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

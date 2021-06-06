@@ -1,16 +1,30 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:valeria_app/activitives/dashboard.dart';
 import 'package:valeria_app/activitives/services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
+
+  _notification(String content){
+    Fluttertoast.showToast(
+      msg: content,
+      gravity: ToastGravity.BOTTOM,
+      toastLength: Toast.LENGTH_SHORT,
+      timeInSecForIosWeb: 1,
+      textColor: Colors.white,
+      backgroundColor: Color(0xff083654),
+    );
+  }
 
   Route _customRoute(Widget nextPage){
     return CupertinoPageRoute(
       builder: (context) => nextPage,
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +93,9 @@ class HomePage extends StatelessWidget {
                             )
                         ),
                         ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              _notification("This feature is being developed !");
+                            },
                             child: Text(
                               'My booking',
                               style: TextStyle(
@@ -95,7 +111,9 @@ class HomePage extends StatelessWidget {
                             )
                         ),
                         ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context, _customRoute(Dashboard()));
+                            },
                             child: Text(
                               'Dashboard',
                               style: TextStyle(
@@ -127,9 +145,11 @@ class HomePage extends StatelessWidget {
                             )
                         ),
                         ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+
+                            },
                             child: Text(
-                              'Contact',
+                              'Family Caring',
                               style: TextStyle(
                                   fontSize: 20
                               ),

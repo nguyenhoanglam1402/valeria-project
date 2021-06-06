@@ -10,6 +10,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+  var percent = 0.7;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,9 +79,12 @@ class _DashboardState extends State<Dashboard> {
                                   children: [
                                     CircularPercentIndicator(
                                       radius: 270,
-                                      percent: 0.7,
+                                      percent: percent,
                                       curve: Curves.fastLinearToSlowEaseIn,
                                       circularStrokeCap: CircularStrokeCap.round,
+                                      animation: true,
+                                      animationDuration: 3000,
+                                      animateFromLastPercent: true,
                                       progressColor: Color(0xffFFA358),
                                       backgroundColor: Color(0xff4DF2F2F2),
                                     ),
