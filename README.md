@@ -6,7 +6,7 @@ This is a health platform developed, designed and developed by the Valeria team.
 + Nguyen Hoang Lam - Main Developer.
 + Tran Quoc Huy - UX / UI Designer.
 + Tran Thi Minh Y - Business Analyst.
-+ Le Ngoc Tan Toan - Video & Animation Creator / Development Supporter.
++ Le Ngoc Tan Toan - Video & Animation Creator.
 
 ## Techologies that we used
 
