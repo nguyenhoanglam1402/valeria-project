@@ -4,6 +4,8 @@ import 'dart:math' as math;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:valeria_app/activitives/blank_page.dart';
 import 'package:valeria_app/activitives/home.dart';
+import 'package:valeria_app/widgets/address_picker.dart';
+import 'package:valeria_app/widgets/hospital_picker.dart';
 import 'package:valeria_app/widgets/schedule_picker.dart';
 
 class ServicesPage extends StatefulWidget {
@@ -146,7 +148,9 @@ class _ServicesPageState extends State<ServicesPage> {
                               context,
                               _customRoute(
                                   BlankPage(
-                                    child: SchedulePicker(),
+                                    child: new SchedulePicker(
+                                      package: 0,
+                                    ),
                                   ),
                               )
                           );
@@ -166,7 +170,18 @@ class _ServicesPageState extends State<ServicesPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              _customRoute(
+                                  BlankPage(
+                                    child: SchedulePicker(
+                                      package: 1,
+                                    ),
+                                  )
+                              )
+                          );
+                        },
                         child: Text(
                           'BASIC CARE',
                           style: TextStyle(
@@ -182,7 +197,18 @@ class _ServicesPageState extends State<ServicesPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            _customRoute(
+                              BlankPage(
+                                child: SchedulePicker(
+                                  package: 2,
+                                )
+                              )
+                            )
+                          );
+                        },
                         child: Text(
                           'BOOKING',
                           style: TextStyle(

@@ -1,15 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
 import 'package:valeria_app/activitives/blank_page.dart';
+import 'package:valeria_app/widgets/address_picker.dart';
 import 'package:valeria_app/widgets/consultant_form.dart';
+import 'package:valeria_app/widgets/hospital_picker.dart';
 
 class SchedulePicker extends StatefulWidget {
-  const SchedulePicker({Key key, int package}) : super(key: key);
 
-  final int package = 0;
+  final int package;
+
+  const SchedulePicker({Key key, this.package}) : super(key: key);
 
   @override
   _SchedulePickerState createState() => _SchedulePickerState();
@@ -260,6 +265,7 @@ class _SchedulePickerState extends State<SchedulePicker> {
                           )
                       ),
                       onPressed: (){
+                        print(widget.package);
                         switch(widget.package){
                           case 0:
                             Navigator.push(context, _customRoute(
@@ -270,10 +276,26 @@ class _SchedulePickerState extends State<SchedulePicker> {
                             break;
                           case 1:
                             Navigator.push(context, _customRoute(
-                                BlankPage(
-                                  child: ConsultantForm(),
+                                new BlankPage(
+                                  child: AddressPicker(
+                                    flow: widget.package,
+                                  )
                                 )
                             ));
+                            break;
+                          case 2:
+                            var hospitalPicker = new Dialog(
+                              child: HospitalPicker(),
+                              insetPadding: EdgeInsets.only(left: 20, right: 20),
+                              backgroundColor: Colors.transparent,
+                            );
+
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return hospitalPicker;
+                                },
+                            );
                             break;
                         }
                       },

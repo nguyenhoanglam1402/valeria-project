@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:valeria_app/activitives/blank_page.dart';
 import 'package:valeria_app/widgets/chart.dart';
 import 'package:valeria_app/widgets/index.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:valeria_app/widgets/schedule_picker.dart';
 
 class DiagnosePage extends StatefulWidget {
   const DiagnosePage({Key key}) : super(key: key);
@@ -180,7 +183,20 @@ class _DiagnosePageState extends State<DiagnosePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) {
+                                        return BlankPage(
+                                          child: SchedulePicker(
+                                            package: 2,
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  );
+                                },
                                 child: Text(
                                   'BOOKING',
                                   style: TextStyle(

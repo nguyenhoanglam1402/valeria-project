@@ -1,12 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:valeria_app/activitives/blank_page.dart';
+import 'package:valeria_app/widgets/notification.dart';
 import 'package:valeria_app/widgets/user_avatar.dart';
 
 class ConsultantCV extends StatefulWidget {
-  const ConsultantCV({Key key, this.name, this.image, this.rating, this.job,
+  const ConsultantCV({Key key, this.header, this.name, this.image, this.rating, this.job,
     this.experience, this.workplace, this.trustIndex, this.isTrust}) : super(key: key);
 
+  final Widget header;
   final String name;
   final String image;
   final double rating;
@@ -23,6 +27,12 @@ class ConsultantCV extends StatefulWidget {
 class _ConsultantCVState extends State<ConsultantCV> {
   @override
   Widget build(BuildContext context) {
+
+    var userAvatar = new UserAvatar(
+      image: widget.image,
+      name: widget.name,
+    );
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -40,10 +50,13 @@ class _ConsultantCVState extends State<ConsultantCV> {
           ),
           child: ListView(
             children: [
-              UserAvatar(
-                image: widget.image,
-                name: widget.name,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  (widget.header!=null)? widget.header: Container(),
+                ],
               ),
+              userAvatar,
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Row(
@@ -229,7 +242,20 @@ class _ConsultantCVState extends State<ConsultantCV> {
                                   )
                               )
                           ),
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) {
+                                  return BlankPage(
+                                    child: ConfirmedNotification(
+                                      consultantAvatar: userAvatar,
+                                    ),
+                                  );
+                                },
+                              )
+                            );
+                          },
                           child: Text(
                               'Book now'
                           )

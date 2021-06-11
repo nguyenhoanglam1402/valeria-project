@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:valeria_app/activitives/diagnose.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
@@ -12,6 +14,14 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   var percent = 0.7;
+
+  Route _customRoute(Widget nextPage){
+    return CupertinoPageRoute(
+      builder: (context) {
+        return nextPage;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +255,12 @@ class _DashboardState extends State<Dashboard> {
                               Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: ElevatedButton(
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    Navigator.push(
+                                      context,
+                                      _customRoute(DiagnosePage()),
+                                    );
+                                  },
                                   child: Text(
                                     'Suggestion',
                                     style: TextStyle(
