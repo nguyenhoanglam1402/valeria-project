@@ -1,11 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:valeria_app/processes/medical_record.dart';
-import 'package:valeria_app/processes/prc_connection.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:valeria_app/activitives/diagnose.dart';
+import 'package:valeria_app/processes/data_controller.dart';
+import 'package:valeria_app/processes/prc_authenticate.dart';
 
 class DataCollection extends StatefulWidget {
   const DataCollection({Key key}) : super(key: key);
@@ -17,14 +16,21 @@ class DataCollection extends StatefulWidget {
 
 class _DataCollectionState extends State<DataCollection> {
 
-
-
   bool kidneyGroup = false;
   bool diabetesGroup = false;
   bool highBloodPressureGroup = false;
   bool smokingGroup = false;
   bool drinkingGroup = false;
   bool depressionGroup = false;
+
+  void _updateMedicalRecord(User user){
+    DataController.getDailyTrackingRoot().child("kidney_group").child(user.uid).set(kidneyGroup);
+    DataController.getDailyTrackingRoot().child("diabetes_group").child(user.uid).set(diabetesGroup);
+    DataController.getDailyTrackingRoot().child("highBloodPressure_group").child(user.uid).set(highBloodPressureGroup);
+    DataController.getDailyTrackingRoot().child("smoking_group").child(user.uid).set(smokingGroup);
+    DataController.getDailyTrackingRoot().child("drinking_group").child(user.uid).set(drinkingGroup);
+    DataController.getDailyTrackingRoot().child("depression_group").child(user.uid).set(depressionGroup);
+  }
 
 
   @override
@@ -592,10 +598,15 @@ class _DataCollectionState extends State<DataCollection> {
                         ),
                         ElevatedButton(
                           onPressed: () async{
-                            Map userRecordMap = new Map();
-                            userRecordMap["kidney"] = kidneyGroup;
-                            print(userRecordMap);
-                            ConnectionController.getUserRoot().push();
+                            _updateMedicalRecord(UserAuth.auth.currentUser);
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) {
+                                  return DiagnosePage();
+                                },
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xdce6e6e6),
