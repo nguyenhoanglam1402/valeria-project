@@ -2,8 +2,10 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:valeria_app/activitives/blank_page.dart';
 import 'package:valeria_app/activitives/dashboard.dart';
 import 'package:valeria_app/activitives/services.dart';
+import 'package:valeria_app/widgets/family_caring.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -146,7 +148,11 @@ class HomePage extends StatelessWidget {
                         ),
                         ElevatedButton(
                             onPressed: (){
-
+                              Navigator.push(context, _customRoute(
+                                BlankPage(
+                                  child: FamilyCaring(),
+                                )
+                              ));
                             },
                             child: Text(
                               'Family Caring',

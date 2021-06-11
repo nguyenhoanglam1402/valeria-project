@@ -19,6 +19,7 @@ class BlankPage extends StatelessWidget {
             ListView(
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
