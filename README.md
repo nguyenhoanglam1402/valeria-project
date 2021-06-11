@@ -3,7 +3,7 @@
 The first idea the Valeria Project was powered by the Q-Health Community of Nguyen Hoang Lam and many unique ideas of Pham Trung Nam. However, after modify and update time, the Valeria Project has some differences and unique from the original idea.
 
 This is a health platform developed, designed and developed by the Valeria team. With the contribution of:
-+ Nguyen Hoang Lam - Main Developer.
++ Nguyen Hoang Lam - Developer.
 + Tran Quoc Huy - UX / UI Designer.
 + Tran Thi Minh Y - Business Analyst.
 + Le Ngoc Tan Toan - Video & Animation Creator.
