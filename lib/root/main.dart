@@ -13,12 +13,11 @@ import 'package:valeria_app/widgets/data_collection.dart';
 Future<void> main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  ConnectionController.setUserRoot("User1");
+  await ConnectionController.initConnection();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage()
+      home: LoginPage()
     ),
   );
 }

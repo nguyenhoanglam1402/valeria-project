@@ -1,8 +1,11 @@
 import 'dart:core';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:valeria_app/activitives/home.dart';
+import 'package:valeria_app/processes/prc_authenticate.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -13,7 +16,26 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  final _auth = FirebaseAuth.instance;
+  var _usernameController = TextEditingController();
+  var _passwordController = TextEditingController();
+
+  Future<void> _login() async {
+    User userCredential = await UserAuth.login(
+      _usernameController.text,
+      _passwordController.text,
+    );
+    print("Print log: ${_usernameController.text}");
+    if(userCredential.uid != null){
+      Navigator.push(
+        context,
+        CupertinoPageRoute(
+          builder: (context) {
+            return HomePage();
+          },
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,6 +164,8 @@ class _LoginPageState extends State<LoginPage> {
                                       bottom: 5
                                   ),
                                 ),
+                                controller: _usernameController,
+                                enableSuggestions: true,
                               ),
                             ),
                             Padding(
@@ -195,6 +219,10 @@ class _LoginPageState extends State<LoginPage> {
                                       bottom: 5
                                   ),
                                 ),
+                                controller: _passwordController,
+                                obscureText: true,
+                                autocorrect: false,
+                                enableSuggestions: false,
                               ),
                             ),
                             Row(
@@ -213,19 +241,10 @@ class _LoginPageState extends State<LoginPage> {
                                             Colors.white,
                                           )
                                       ),
-                                      onPressed: () async {
-                                        try {
-                                          UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-                                              email: "barry.allen@example.com",
-                                              password: "SuperSecretPassword!"
-                                          );
-                                        } on FirebaseAuthException catch (e) {
-                                          if (e.code == 'user-not-found') {
-                                            print('No user found for that email.');
-                                          } else if (e.code == 'wrong-password') {
-                                            print('Wrong password provided for that user.');
-                                          }
-                                        }
+                                      onPressed: () {
+                                        _login();
+                                        _usernameController.text ='';
+                                        _passwordController.text = '';
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.only(left: 30, top: 5, right: 30, bottom: 5),

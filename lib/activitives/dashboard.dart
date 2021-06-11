@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:valeria_app/activitives/blank_page.dart';
 import 'package:valeria_app/activitives/diagnose.dart';
+import 'package:valeria_app/widgets/data_collection.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
@@ -258,7 +260,11 @@ class _DashboardState extends State<Dashboard> {
                                   onPressed: (){
                                     Navigator.push(
                                       context,
-                                      _customRoute(DiagnosePage()),
+                                      _customRoute(
+                                        BlankPage(
+                                          child: DataCollection(),
+                                        )
+                                      ),
                                     );
                                   },
                                   child: Text(
